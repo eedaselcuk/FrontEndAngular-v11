@@ -1,0 +1,25 @@
+<form style="margin-left: 10pt; margin-top: 10%;">
+  <div class="col-md col-md-offset-3">
+    <h1> Hospitals </h1>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>City</th>
+        <th>Hospital Name</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hospital of hospitals">
+        <td>{{hospital.city}}</td>
+        <td>{{hospital.name}}</td>
+        <td>{{hospital.address}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  </div>>
+
+</form>
+

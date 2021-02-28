@@ -1,0 +1,35 @@
+<div class="container" style="position:relative; text-align:center; ">
+  <form *ngIf="!isLogin" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <div class="mb-4 row">
+      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="text" readonly class="form-control-plaintext" id="email" placeholder="email@example.com"
+        [(ngModel)]="form.email" required  #email="ngModel">
+      </div>
+      <div
+          class="alert alert-danger"  role="alert"  *ngIf="username.errors && f.submitted"  >
+      </div>
+    <div class="mb-4 row">
+      <label for="password" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="password" [(ngModel)]="form.password"
+        required  minlength="6"  #password="ngModel">
+      </div>
+      <div  class="alert alert-danger"  role="alert"  *ngIf="password.errors && f.submitted">
+        <div *ngIf="password.errors.required"> Password is required! </div>
+        <div *ngIf="password.errors.minlength"> Must be at least 6 characters! </div>
+      </div>
+    </div>
+    <div class="form-group col-lg-6 mx-auto mb-3">
+      <a href="#" class="btn btn-primary btn-block py-2" routerLink="/hospitals">
+          <span class="font-weight-bold"> Log In </span>
+      </a>
+    </div>
+    <div class="form-group">
+      <div   class="alert alert-danger"   role="alert"  *ngIf="f.submitted && isFailed"  >
+        Login failed: {{ errorMessage }}
+      </div>
+    </div>
+    <div class="alert alert-success" *ngIf="isLogin">  Logged in as {{ roles }}.  </div>
+  </form>
+</div>

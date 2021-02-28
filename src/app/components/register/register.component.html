@@ -1,0 +1,81 @@
+
+<div class="container" style="padding: 5%;">
+  <div class="mb-4 row">
+      <div class="mb-4 row">
+            <form *ngIf="!isSuccessful"
+            name="form"
+            (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate >
+              <div class="row">
+                  <div class="input-group col-lg-6 mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text bg-white px-4 border-md border-right-0">
+                          </span>
+                      </div>
+                      <input id="firstName" type="text" name="firstname" placeholder="First Name"
+                      class="form-control bg-white border-left-0 border-md" [(ngModel)]="form.firstname"
+                      required  minlength="3"   maxlength="20"  #firstName="ngModel">
+                  </div>
+                  <div class="alert-danger" *ngIf="firstName.errors && f.submitted">
+                    <div *ngIf="firstName.errors.required"> Name is required</div>
+                    <div *ngIf="firstName.errors.minlength"> Must be at least 3 characters!   </div>
+                    <div *ngIf="firstName.errors.maxlength"> Must be at most 20 characters!   </div>
+                  </div>
+
+                  <div class="input-group col-lg-6 mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text bg-white px-4 border-md border-right-0">
+                          </span>
+                      </div>
+                      <input id="lastName" type="text" name="lastname" placeholder="Last Name"
+                      class="form-control bg-white border-left-0 border-md"[(ngModel)]="form.lastname"
+                      required  minlength="3"   maxlength="20"  #lastName="ngModel">
+                  </div>
+                  <div class="alert-danger" *ngIf="lastName.errors && f.submitted">
+                    <div *ngIf="lastName.errors.required"> Lastname is required</div>
+                    <div *ngIf="lastName.errors.minlength"> Must be at least 3 characters!   </div>
+                    <div *ngIf="lastName.errors.maxlength"> Must be at most 20 characters!   </div>
+                  </div>
+
+                  <div class="input-group col-lg-6 mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text bg-white px-4 border-md border-right-0">
+                          </span>
+                      </div>
+                      <input id="email" type="email" name="email" placeholder="Email Address"
+                      class="form-control bg-white border-left-0 border-md" [(ngModel)]="form.email"
+                      required  email #email="ngModel">
+                  </div>
+                  <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                    <div *ngIf="email.errors.required"> Email is required! </div>
+                    <div *ngIf="email.errors.email">  Must be a valid email address!    </div>
+                  </div>
+
+                  <div class="input-group col-lg-6 mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text bg-white px-4 border-md border-right-0">
+                          </span>
+                      </div>
+                      <input id="password" type="password" name="password" placeholder="Password"
+                      class="form-control bg-white border-left-0 border-md" [(ngModel)]="form.password"
+                      required  minlength="6"   #password="ngModel">
+                  </div>
+                  <div class="alert-danger" *ngIf="password.errors && f.submitted">
+                    <div *ngIf="password.errors.required">Password is required!</div>
+                    <div *ngIf="password.errors.minlength"> Must be at least 6 characters!         </div>
+                  </div>
+
+                  <div class="form-group col-lg-6 mx-auto mb-3">
+                      <a href="#" class="btn btn-primary btn-block py-2">
+                          <span class="font-weight-bold">Create your account</span>
+                      </a>
+                  </div>
+                  <div class="alert alert-warning" *ngIf="f.submitted && isFailed">
+                    Signup failed!<br />{{ errorMessage }}
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
